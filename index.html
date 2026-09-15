@@ -360,6 +360,52 @@
   .reveal.in-view{opacity:1; transform:translateY(0);}
 
   .brand-y{color:var(--yellow); font-weight:700;}
+
+  /* ---------- CONTRACT ADDRESS + NOTIFY ---------- */
+  .launch-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:760px){ .launch-grid{grid-template-columns:1fr;} }
+  .launch-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:28px; position:relative;
+  }
+  .launch-card h3{font-size:18px; margin-bottom:6px;}
+  .launch-card > p.hint{color:var(--muted); font-size:13.5px; margin:0 0 18px 0;}
+
+  .ca-status{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:11.5px; letter-spacing:.03em; color:var(--muted);
+    background:var(--surface-2); border:1px solid var(--line); border-radius:999px;
+    padding:6px 12px; margin-bottom:16px;
+  }
+  .ca-status .dot{width:6px; height:6px; border-radius:50%; background:var(--muted); flex:none;}
+  .ca-status.is-live{color:var(--yellow);}
+  .ca-status.is-live .dot{background:var(--yellow); box-shadow:0 0 8px 2px rgba(255,222,0,0.6); animation: blipPulse 1.8s ease-in-out infinite;}
+
+  .ca-box{
+    display:flex; align-items:center; gap:10px;
+    background:var(--bg); border:1px solid var(--line); border-radius:12px;
+    padding:12px 14px; font-family:'Plus Jakarta Sans'; font-weight:600; font-size:13.5px;
+    color:var(--text); overflow:hidden;
+  }
+  .ca-box span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;}
+  .ca-copy{
+    flex:none; background:var(--surface-2); border:1px solid var(--line); color:var(--text);
+    border-radius:8px; padding:7px 12px; font-size:12px; font-weight:700; cursor:pointer;
+  }
+  .ca-copy:hover{border-color:rgba(255,222,0,0.5); color:var(--yellow);}
+  .launch-card .btn{margin-top:14px; width:100%; justify-content:center;}
+
+  .notify-form{display:flex; gap:10px; flex-wrap:wrap; margin-top:4px;}
+  .notify-form input[type="email"]{
+    flex:1; min-width:180px;
+    background:var(--bg); border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; color:var(--text); font-family:'Manrope'; font-size:14px;
+  }
+  .notify-form input[type="email"]::placeholder{color:var(--muted);}
+  .notify-form input[type="email"]:focus{outline:none; border-color:rgba(255,222,0,0.5);}
+  .notify-form button{flex:none;}
+  .notify-msg{margin-top:12px; font-size:13px; color:var(--muted);}
+  .notify-msg.success{color:var(--yellow);}
 </style>
 </head>
 <body>
@@ -378,6 +424,7 @@
       <a href="#five" data-i18n="nav.five">The NGAKAK Five</a>
       <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
       <a href="#howtobuy" data-i18n="nav.buy">How to Buy</a>
+      <a href="#launch" data-i18n="nav.ca">CA & Alerts</a>
       <a href="#tokenomics" data-i18n="nav.token">Tokenomics</a>
       <a href="#community" data-i18n="nav.community">Channels</a>
     </nav>
@@ -512,6 +559,36 @@
   </section>
 
   <!-- HOW TO BUY -->
+  <section id="launch">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 data-i18n="launch.title">Contract address & launch alerts</h2>
+        <p data-i18n="launch.sub">The CA below only goes live at launch. Until then, get notified the moment it's public.</p>
+      </div>
+      <div class="launch-grid">
+        <div class="launch-card reveal">
+          <div class="ca-status" id="caStatus"><span class="dot"></span><span data-i18n="launch.pending">AWAITING LAUNCH</span></div>
+          <h3 data-i18n="launch.ca.h">Official contract address</h3>
+          <p class="hint" data-i18n="launch.ca.p">Only trust the CA shown here or on NGAKAK GLOBAL's official channels — never one shared in DMs.</p>
+          <div class="ca-box">
+            <span id="caText" data-i18n="launch.ca.notyet">Not live yet — check back Sept 25, 2026</span>
+            <button class="ca-copy" id="caCopyBtn" data-i18n="launch.copy">Copy</button>
+          </div>
+          <a class="btn btn-outline" id="caPumpLink" href="https://pump.fun" style="pointer-events:none; opacity:.5;" data-i18n="launch.viewpump">View on Pump.fun ↗</a>
+        </div>
+        <div class="launch-card reveal">
+          <h3 data-i18n="launch.notify.h">Get notified at launch</h3>
+          <p class="hint" data-i18n="launch.notify.p">Drop your email and we'll ping you the moment $NGAKAK and the CA go live — no spam, ever.</p>
+          <form class="notify-form" id="notifyForm">
+            <input type="email" id="notifyEmail" required placeholder="you@email.com" data-i18n-placeholder="launch.notify.placeholder">
+            <button type="submit" class="btn btn-primary" data-i18n="launch.notify.btn">Notify me</button>
+          </form>
+          <p class="notify-msg" id="notifyMsg"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="howtobuy">
     <div class="wrap">
       <div class="section-head reveal">
@@ -613,7 +690,14 @@
 <script>
 const i18n = {
   en: {
-    "nav.tag":"The Official NGAKAK Universe","nav.about":"About","nav.five":"The NGAKAK Five","nav.roadmap":"Roadmap","nav.buy":"How to Buy","nav.token":"Tokenomics","nav.community":"Channels","nav.join":"Join Community",
+    "nav.tag":"The Official NGAKAK Universe","nav.about":"About","nav.five":"The NGAKAK Five","nav.roadmap":"Roadmap","nav.buy":"How to Buy","nav.ca":"CA & Alerts","nav.token":"Tokenomics","nav.community":"Channels","nav.join":"Join Community",
+    "launch.title":"Contract address & launch alerts","launch.sub":"The CA below only goes live at launch. Until then, get notified the moment it's public.",
+    "launch.pending":"AWAITING LAUNCH","launch.live":"LIVE",
+    "launch.ca.h":"Official contract address","launch.ca.p":"Only trust the CA shown here or on NGAKAK GLOBAL's official channels — never one shared in DMs.",
+    "launch.ca.notyet":"Not live yet — check back Sept 25, 2026","launch.copy":"Copy","launch.viewpump":"View on Pump.fun ↗",
+    "launch.notify.h":"Get notified at launch","launch.notify.p":"Drop your email and we'll ping you the moment $NGAKAK and the CA go live — no spam, ever.",
+    "launch.notify.placeholder":"you@email.com","launch.notify.btn":"Notify me",
+    "launch.notify.notready":"Sign-up isn't connected yet — follow our official channels instead.","launch.notify.success":"You're on the list — we'll email you at launch.","launch.notify.error":"Something went wrong — please try again.",
     "hero.pill":"Launching on Pump.fun · Sept 25, 2026 · Fair launch, no presale, no private sale",
     "hero.title":"No stress. Just <em>NGAKAK.</em>",
     "hero.sub":"NGAKAK GLOBAL is a community-driven meme token built around laughter, creativity, and connection — one brand, one community, one global family.",
@@ -657,7 +741,14 @@ const i18n = {
     "footer.disclaimer":"$NGAKAK is a meme token with no intrinsic utility, made purely for entertainment. NGAKAK GLOBAL is a community-driven project, not a financial entity, and nothing here is a promise of price performance or financial return. Always do your own research before buying any crypto asset. Nothing on this page is financial advice."
   },
   id: {
-    "nav.tag":"NGAKAK Universe Resmi","nav.about":"Tentang","nav.five":"The NGAKAK Five","nav.roadmap":"Roadmap","nav.buy":"Cara Beli","nav.token":"Tokenomics","nav.community":"Kanal","nav.join":"Gabung Komunitas",
+    "nav.tag":"NGAKAK Universe Resmi","nav.about":"Tentang","nav.five":"The NGAKAK Five","nav.roadmap":"Roadmap","nav.buy":"Cara Beli","nav.ca":"CA & Notifikasi","nav.token":"Tokenomics","nav.community":"Kanal","nav.join":"Gabung Komunitas",
+    "launch.title":"Contract address & notifikasi launch","launch.sub":"CA di bawah baru aktif saat launch. Sebelum itu, daftar biar langsung dikabari begitu resmi rilis.",
+    "launch.pending":"MENUNGGU LAUNCH","launch.live":"LIVE",
+    "launch.ca.h":"Contract address resmi","launch.ca.p":"Hanya percaya CA yang tertera di sini atau di kanal resmi NGAKAK GLOBAL — jangan pernah yang dibagikan lewat DM.",
+    "launch.ca.notyet":"Belum live — cek lagi 25 Sept 2026","launch.copy":"Copy","launch.viewpump":"Lihat di Pump.fun ↗",
+    "launch.notify.h":"Dapatkan notifikasi saat launch","launch.notify.p":"Masukkan email kamu, nanti kami kabari begitu $NGAKAK dan CA-nya resmi live — tanpa spam.",
+    "launch.notify.placeholder":"email@kamu.com","launch.notify.btn":"Notify me",
+    "launch.notify.notready":"Pendaftaran belum terhubung — sementara ikuti kanal resmi kami dulu.","launch.notify.success":"Kamu sudah terdaftar — nanti kami email pas launch.","launch.notify.error":"Ada yang salah — coba lagi ya.",
     "hero.pill":"Launching di Pump.fun · 25 Sept 2026 · Fair launch, tanpa presale, tanpa private sale",
     "hero.title":"No stress. Just <em>NGAKAK.</em>",
     "hero.sub":"NGAKAK GLOBAL adalah meme token berbasis komunitas yang dibangun di atas tawa, kreativitas, dan koneksi — satu brand, satu komunitas, satu keluarga global.",
@@ -701,7 +792,14 @@ const i18n = {
     "footer.disclaimer":"$NGAKAK adalah token meme tanpa utilitas intrinsik, dibuat murni untuk hiburan. NGAKAK GLOBAL adalah proyek berbasis komunitas, bukan entitas keuangan, dan tidak ada yang menjadi janji performa harga atau imbal hasil finansial. Selalu DYOR sebelum membeli aset kripto apa pun. Tidak ada yang ada di halaman ini merupakan nasihat keuangan."
   },
   zh: {
-    "nav.tag":"官方 NGAKAK 宇宙","nav.about":"关于","nav.five":"NGAKAK 五人组","nav.roadmap":"路线图","nav.buy":"购买方式","nav.token":"代币经济学","nav.community":"官方渠道","nav.join":"加入社区",
+    "nav.tag":"官方 NGAKAK 宇宙","nav.about":"关于","nav.five":"NGAKAK 五人组","nav.roadmap":"路线图","nav.buy":"购买方式","nav.ca":"合约与提醒","nav.token":"代币经济学","nav.community":"官方渠道","nav.join":"加入社区",
+    "launch.title":"合约地址与上线提醒","launch.sub":"下方合约地址(CA)只有在正式上线后才会生效。在那之前,订阅提醒,第一时间获知公开消息。",
+    "launch.pending":"等待上线","launch.live":"已上线",
+    "launch.ca.h":"官方合约地址","launch.ca.p":"只信任此处或 NGAKAK GLOBAL 官方渠道公布的合约地址 —— 切勿相信私信中分享的地址。",
+    "launch.ca.notyet":"尚未公布 —— 请于 2026年9月25日 后查看","launch.copy":"复制","launch.viewpump":"在 Pump.fun 查看 ↗",
+    "launch.notify.h":"订阅上线提醒","launch.notify.p":"留下你的邮箱,$NGAKAK 与合约地址一上线,我们立即通知你 —— 绝不发送垃圾邮件。",
+    "launch.notify.placeholder":"you@email.com","launch.notify.btn":"提醒我",
+    "launch.notify.notready":"订阅功能尚未连接 —— 请先关注我们的官方渠道。","launch.notify.success":"已加入订阅名单 —— 上线时我们会邮件通知你。","launch.notify.error":"出了点问题 —— 请重试。",
     "hero.pill":"将于 2026年9月25日 在 Pump.fun 上线 · 公平发售,无预售,无私募",
     "hero.title":"别有压力。只管<em>NGAKAK。</em>",
     "hero.sub":"NGAKAK GLOBAL 是一个由社区驱动的 meme 代币,围绕欢笑、创意与连接而建立 —— 一个品牌、一个社区、一个全球大家庭。",
@@ -745,7 +843,14 @@ const i18n = {
     "footer.disclaimer":"$NGAKAK 是一种没有内在实用性的 meme 代币,纯粹用于娱乐。NGAKAK GLOBAL 是一个社区驱动的项目,而非金融实体,本页面任何内容均不构成对价格表现或财务回报的承诺。购买任何加密资产前请务必自行研究(DYOR)。本页面内容均不构成财务建议。"
   },
   ru: {
-    "nav.tag":"Официальная вселенная NGAKAK","nav.about":"О проекте","nav.five":"NGAKAK Five","nav.roadmap":"Дорожная карта","nav.buy":"Как купить","nav.token":"Токеномика","nav.community":"Каналы","nav.join":"Присоединиться",
+    "nav.tag":"Официальная вселенная NGAKAK","nav.about":"О проекте","nav.five":"NGAKAK Five","nav.roadmap":"Дорожная карта","nav.buy":"Как купить","nav.ca":"CA и уведомления","nav.token":"Токеномика","nav.community":"Каналы","nav.join":"Присоединиться",
+    "launch.title":"Адрес контракта и уведомления о запуске","launch.sub":"CA ниже станет активным только при запуске. А пока — подпишитесь, чтобы узнать об этом первыми.",
+    "launch.pending":"ОЖИДАЕТСЯ ЗАПУСК","launch.live":"АКТИВЕН",
+    "launch.ca.h":"Официальный адрес контракта","launch.ca.p":"Доверяйте только CA, указанному здесь или в официальных каналах NGAKAK GLOBAL — никогда тому, что прислали в личные сообщения.",
+    "launch.ca.notyet":"Пока не опубликован — загляните снова 25 сентября 2026","launch.copy":"Копировать","launch.viewpump":"Открыть на Pump.fun ↗",
+    "launch.notify.h":"Получить уведомление о запуске","launch.notify.p":"Оставьте email, и мы сообщим вам, как только $NGAKAK и CA станут активны — никакого спама.",
+    "launch.notify.placeholder":"you@email.com","launch.notify.btn":"Уведомить меня",
+    "launch.notify.notready":"Подписка пока не подключена — а пока следите за нашими официальными каналами.","launch.notify.success":"Вы в списке — напишем вам на запуске.","launch.notify.error":"Что-то пошло не так — попробуйте ещё раз.",
     "hero.pill":"Запуск на Pump.fun · 25 сентября 2026 · Честный запуск, без пресейла, без частных продаж",
     "hero.title":"Без стресса. Просто <em>NGAKAK.</em>",
     "hero.sub":"NGAKAK GLOBAL — мем-токен, управляемый сообществом, построенный вокруг смеха, творчества и связи между людьми — один бренд, одно сообщество, одна глобальная семья.",
@@ -803,10 +908,93 @@ function applyLang(lang){
       el.innerHTML = highlightBrand(dict[key]);
     }
   });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-placeholder');
+    if(dict[key] !== undefined){
+      el.setAttribute('placeholder', dict[key]);
+    }
+  });
+  refreshCADisplay(lang);
 }
 
 const langSelect = document.getElementById('lang');
 langSelect.addEventListener('change', e => applyLang(e.target.value));
+// ---- Contract Address ----
+// TODO: once $NGAKAK launches on Pump.fun, paste the real contract address between the quotes below.
+// Leaving it empty keeps the site showing "Awaiting launch".
+const CONTRACT_ADDRESS = "";
+
+function refreshCADisplay(lang){
+  const dict = i18n[lang] || i18n.en;
+  const statusEl = document.getElementById('caStatus');
+  const textEl = document.getElementById('caText');
+  const linkEl = document.getElementById('caPumpLink');
+  if (!statusEl || !textEl || !linkEl) return;
+
+  if (CONTRACT_ADDRESS) {
+    statusEl.classList.add('is-live');
+    statusEl.querySelector('span:last-child').textContent = dict['launch.live'] || 'LIVE';
+    textEl.textContent = CONTRACT_ADDRESS;
+    textEl.removeAttribute('data-i18n');
+    linkEl.href = `https://pump.fun/coin/${CONTRACT_ADDRESS}`;
+    linkEl.style.pointerEvents = 'auto';
+    linkEl.style.opacity = '1';
+  } else {
+    statusEl.classList.remove('is-live');
+    statusEl.querySelector('span:last-child').textContent = dict['launch.pending'] || 'AWAITING LAUNCH';
+    textEl.textContent = dict['launch.ca.notyet'] || 'Not live yet — check back Sept 25, 2026';
+    linkEl.style.pointerEvents = 'none';
+    linkEl.style.opacity = '.5';
+  }
+}
+
+document.getElementById('caCopyBtn').addEventListener('click', () => {
+  if (!CONTRACT_ADDRESS) return;
+  navigator.clipboard.writeText(CONTRACT_ADDRESS).then(() => {
+    const btn = document.getElementById('caCopyBtn');
+    const original = btn.textContent;
+    btn.textContent = '✓';
+    setTimeout(() => { btn.textContent = original; }, 1500);
+  });
+});
+
+// ---- Notify Me form ----
+// TODO: sign up free at https://formspree.io, create a form, and paste your endpoint below.
+// Example: "https://formspree.io/f/abcdwxyz"
+const NOTIFY_FORM_ENDPOINT = "";
+
+document.getElementById('notifyForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const emailInput = document.getElementById('notifyEmail');
+  const msgEl = document.getElementById('notifyMsg');
+  const dict = i18n[document.documentElement.lang] || i18n.en;
+
+  if (!NOTIFY_FORM_ENDPOINT) {
+    msgEl.textContent = dict['launch.notify.notready'] || 'Sign-up isn\'t connected yet — follow our official channels instead.';
+    msgEl.classList.remove('success');
+    return;
+  }
+
+  try {
+    const res = await fetch(NOTIFY_FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(e.target)
+    });
+    if (res.ok) {
+      msgEl.textContent = dict['launch.notify.success'] || 'You\'re on the list — we\'ll email you at launch.';
+      msgEl.classList.add('success');
+      emailInput.value = '';
+    } else {
+      msgEl.textContent = dict['launch.notify.error'] || 'Something went wrong — please try again.';
+      msgEl.classList.remove('success');
+    }
+  } catch (err) {
+    msgEl.textContent = dict['launch.notify.error'] || 'Something went wrong — please try again.';
+    msgEl.classList.remove('success');
+  }
+});
+
 applyLang('en');
 
 // Confetti particles in hero (skip entirely if user prefers reduced motion)
