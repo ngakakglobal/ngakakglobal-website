@@ -580,7 +580,7 @@
           <h3 data-i18n="launch.notify.h">Get notified at launch</h3>
           <p class="hint" data-i18n="launch.notify.p">Drop your email and we'll ping you the moment $NGAKAK and the CA go live — no spam, ever.</p>
           <form class="notify-form" id="notifyForm">
-            <input type="email" id="notifyEmail" required placeholder="you@email.com" data-i18n-placeholder="launch.notify.placeholder">
+            <input type="email" id="notifyEmail" name="email" required placeholder="you@email.com" data-i18n-placeholder="launch.notify.placeholder">
             <button type="submit" class="btn btn-primary" data-i18n="launch.notify.btn">Notify me</button>
           </form>
           <p class="notify-msg" id="notifyMsg"></p>
@@ -962,7 +962,7 @@ document.getElementById('caCopyBtn').addEventListener('click', () => {
 // TODO: sign up free at https://formspree.io, create a form, and paste your endpoint below.
 // Example: "https://formspree.io/f/abcdwxyz"
 const NOTIFY_FORM_ENDPOINT = "https://formspree.io/f/maeyrgra";
-  
+
 document.getElementById('notifyForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const emailInput = document.getElementById('notifyEmail');
