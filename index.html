@@ -1206,6 +1206,15 @@
   .notify-form button{flex:none;}
   .notify-msg{margin-top:12px;font-size:13px;color:var(--muted);}
   .notify-msg.success{color:var(--yellow);}
+  .form-privacy{margin:10px 0 0;color:var(--muted);font-size:11px;line-height:1.55;}
+  .form-privacy a{color:var(--yellow);text-decoration:underline;text-underline-offset:3px;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  .launch-scam-alert{margin:18px 0 0;padding:18px 20px;border:1px solid rgba(255,222,0,.56);border-radius:18px;background:linear-gradient(100deg,rgba(255,222,0,.16),rgba(255,222,0,.045));display:flex;gap:14px;align-items:flex-start;}
+  .launch-scam-alert .alert-icon{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--yellow);color:var(--ink);font-weight:900;}
+  .launch-scam-alert strong{display:block;color:var(--yellow);font:800 13px 'Plus Jakarta Sans';letter-spacing:.03em;text-transform:uppercase;}
+  .launch-scam-alert p{margin:3px 0 0;color:var(--text);font-size:13px;line-height:1.55;}
+  .ca-copy:disabled{cursor:not-allowed;opacity:.45;}
+  .launch-card .btn[aria-disabled="true"]{cursor:not-allowed;opacity:.5;}
   .launch-mini-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -1692,6 +1701,14 @@
           </div>
         </div>
 
+        <aside class="launch-scam-alert reveal" aria-label="Important anti-scam notice">
+          <div class="alert-icon" aria-hidden="true">!</div>
+          <div>
+            <strong data-i18n="launch.scam.title">Protect your wallet</strong>
+            <p data-i18n="launch.scam.body">NGAKAK GLOBAL will never ask for your seed phrase, private key, wallet password, or a direct transfer. Ignore contract addresses sent in DMs and verify them here first.</p>
+          </div>
+        </aside>
+
         <div class="launch-grid">
           <div class="launch-card primary reveal">
             <div class="ca-status" id="caStatus">
@@ -1704,10 +1721,10 @@
 
             <div class="ca-box">
               <span id="caText" data-i18n="launch.ca.notyet">Not live yet — check back Sept 25, 2026</span>
-              <button class="ca-copy" id="caCopyBtn" data-i18n="launch.copy">Copy</button>
+              <button class="ca-copy" id="caCopyBtn" type="button" disabled aria-disabled="true" data-i18n="launch.copy">Copy</button>
             </div>
 
-            <a class="btn btn-outline" id="caPumpLink" href="https://pump.fun" style="pointer-events:none;opacity:.5;" data-i18n="launch.viewpump">View on Pump.fun ↗</a>
+            <a class="btn btn-outline" id="caPumpLink" role="button" aria-disabled="true" tabindex="-1" data-i18n="launch.viewpump">View on Pump.fun ↗</a>
 
             <div class="launch-safe" data-i18n="launch.safe">Security rule: never use a contract address received through a DM, reply, or unofficial post.</div>
           </div>
@@ -1717,9 +1734,11 @@
             <p class="hint" data-i18n="launch.notify.p">Drop your email and we'll ping you the moment $NGAKAK and the CA go live — no spam, ever.</p>
 
             <form class="notify-form" id="notifyForm">
+              <label class="sr-only" for="notifyEmail" data-i18n="launch.notify.label">Email address</label>
               <input type="email" id="notifyEmail" name="email" required placeholder="you@email.com" data-i18n-placeholder="launch.notify.placeholder">
               <button type="submit" class="btn btn-primary" data-i18n="launch.notify.btn">Notify me</button>
             </form>
+            <p class="form-privacy" data-i18n="launch.notify.privacy">Your email is submitted through Formspree and used only to notify you about the launch. <a href="privacy.html">Read our Privacy Policy.</a></p>
             <p class="notify-msg" id="notifyMsg"></p>
 
             <div class="launch-mini-grid">
@@ -1993,6 +2012,8 @@
       <a href="#five" data-i18n="nav.five">The NGAKAK Five</a>
       <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
       <a href="https://x.com/ngakak_global">X (Twitter)</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Risk Disclosure</a>
     </nav>
   </div>
   <div class="wrap">
@@ -2012,6 +2033,8 @@ const i18n = {
     "launch.ca.notyet":"Not live yet — check back Sept 25, 2026","launch.copy":"Copy","launch.viewpump":"View on Pump.fun ↗",
     "launch.notify.h":"Get notified at launch","launch.notify.p":"Drop your email and we'll ping you the moment $NGAKAK and the CA go live — no spam, ever.",
     "launch.notify.placeholder":"you@email.com","launch.notify.btn":"Notify me",
+    "launch.notify.label":"Email address","launch.notify.privacy":"Your email is submitted through Formspree and used only to notify you about the launch. <a href=\"privacy.html\">Read our Privacy Policy.</a>",
+    "launch.scam.title":"Protect your wallet","launch.scam.body":"NGAKAK GLOBAL will never ask for your seed phrase, private key, wallet password, or a direct transfer. Ignore contract addresses sent in DMs and verify them here first.",
     "launch.notify.notready":"Sign-up isn't connected yet — follow our official channels instead.","launch.notify.success":"You're on the list — we'll email you at launch.","launch.notify.error":"Something went wrong — please try again.",
     "hero.pill":"THE NGAKAK UNIVERSE · GLOBAL ENTERTAINMENT","hero.kicker":"The internet's happiest chaos.","hero.launchLabel":"$NGAKAK launches on Pump.fun","hero.launchDate":"Sept 25, 2026",
     "hero.title":"<span class=\"line\">NO STRESS.</span><span class=\"line\">JUST <em>NGAKAK.</em></span>",
@@ -2069,6 +2092,8 @@ const i18n = {
     "launch.ca.notyet":"Belum live — cek lagi 25 Sept 2026","launch.copy":"Copy","launch.viewpump":"Lihat di Pump.fun ↗",
     "launch.notify.h":"Dapatkan notifikasi saat launch","launch.notify.p":"Masukkan email kamu, nanti kami kabari begitu $NGAKAK dan CA-nya resmi live — tanpa spam.",
     "launch.notify.placeholder":"email@kamu.com","launch.notify.btn":"Notify me",
+    "launch.notify.label":"Alamat email","launch.notify.privacy":"Email kamu dikirim melalui Formspree dan hanya digunakan untuk memberi notifikasi launch. <a href=\"privacy.html\">Baca Kebijakan Privasi kami.</a>",
+    "launch.scam.title":"Lindungi wallet kamu","launch.scam.body":"NGAKAK GLOBAL tidak pernah meminta seed phrase, private key, password wallet, atau transfer langsung. Abaikan contract address dari DM dan verifikasi dulu di halaman ini.",
     "launch.notify.notready":"Pendaftaran belum terhubung — sementara ikuti kanal resmi kami dulu.","launch.notify.success":"Kamu sudah terdaftar — nanti kami email pas launch.","launch.notify.error":"Ada yang salah — coba lagi ya.",
     "hero.pill":"THE NGAKAK UNIVERSE · GLOBAL ENTERTAINMENT","hero.kicker":"Kekacauan paling bahagia di internet.","hero.launchLabel":"$NGAKAK launch di Pump.fun","hero.launchDate":"25 Sept 2026",
     "hero.title":"<span class=\"line\">NO STRESS.</span><span class=\"line\">JUST <em>NGAKAK.</em></span>",
@@ -2124,6 +2149,8 @@ const i18n = {
     "launch.ca.notyet":"尚未公布 —— 请于 2026年9月25日 后查看","launch.copy":"复制","launch.viewpump":"在 Pump.fun 查看 ↗",
     "launch.notify.h":"订阅上线提醒","launch.notify.p":"留下你的邮箱,$NGAKAK 与合约地址一上线,我们立即通知你 —— 绝不发送垃圾邮件。",
     "launch.notify.placeholder":"you@email.com","launch.notify.btn":"提醒我",
+    "launch.notify.label":"电子邮箱","launch.notify.privacy":"你的邮箱将通过 Formspree 提交，仅用于发送上线通知。<a href=\"privacy.html\">阅读隐私政策。</a>",
+    "launch.scam.title":"保护你的钱包","launch.scam.body":"NGAKAK GLOBAL 绝不会索要助记词、私钥、钱包密码或直接转账。忽略私信中的合约地址，先在此页面验证。",
     "launch.notify.notready":"订阅功能尚未连接 —— 请先关注我们的官方渠道。","launch.notify.success":"已加入订阅名单 —— 上线时我们会邮件通知你。","launch.notify.error":"出了点问题 —— 请重试。",
     "hero.pill":"将于 2026年9月25日 在 Pump.fun 上线 · 公平发售,无预售,无私募",
     "hero.title":"别有压力。只管<em>NGAKAK。</em>",
@@ -2179,6 +2206,8 @@ const i18n = {
     "launch.ca.notyet":"Пока не опубликован — загляните снова 25 сентября 2026","launch.copy":"Копировать","launch.viewpump":"Открыть на Pump.fun ↗",
     "launch.notify.h":"Получить уведомление о запуске","launch.notify.p":"Оставьте email, и мы сообщим вам, как только $NGAKAK и CA станут активны — никакого спама.",
     "launch.notify.placeholder":"you@email.com","launch.notify.btn":"Уведомить меня",
+    "launch.notify.label":"Адрес электронной почты","launch.notify.privacy":"Ваш email передаётся через Formspree и используется только для уведомления о запуске. <a href=\"privacy.html\">Прочитать Политику конфиденциальности.</a>",
+    "launch.scam.title":"Защитите свой кошелёк","launch.scam.body":"NGAKAK GLOBAL никогда не попросит seed-фразу, приватный ключ, пароль кошелька или прямой перевод. Игнорируйте адреса контрактов из личных сообщений и сначала проверяйте их здесь.",
     "launch.notify.notready":"Подписка пока не подключена — а пока следите за нашими официальными каналами.","launch.notify.success":"Вы в списке — напишем вам на запуске.","launch.notify.error":"Что-то пошло не так — попробуйте ещё раз.",
     "hero.pill":"Запуск на Pump.fun · 25 сентября 2026 · Честный запуск, без пресейла, без частных продаж",
     "hero.title":"Без стресса. Просто <em>NGAKAK.</em>",
@@ -2266,22 +2295,33 @@ function refreshCADisplay(lang){
   const statusEl = document.getElementById('caStatus');
   const textEl = document.getElementById('caText');
   const linkEl = document.getElementById('caPumpLink');
-  if (!statusEl || !textEl || !linkEl) return;
+  const copyBtn = document.getElementById('caCopyBtn');
+  const launchLive = document.getElementById('launchLive');
+  if (!statusEl || !textEl || !linkEl || !copyBtn || !launchLive) return;
 
   if (CONTRACT_ADDRESS) {
     statusEl.classList.add('is-live');
     statusEl.querySelector('span:last-child').textContent = dict['launch.live'] || 'LIVE';
+    launchLive.classList.add('is-live');
+    launchLive.querySelector('span:last-child').textContent = dict['launch.live'] || 'LIVE';
     textEl.textContent = CONTRACT_ADDRESS;
     textEl.removeAttribute('data-i18n');
     linkEl.href = `https://pump.fun/coin/${CONTRACT_ADDRESS}`;
-    linkEl.style.pointerEvents = 'auto';
-    linkEl.style.opacity = '1';
+    linkEl.removeAttribute('aria-disabled');
+    linkEl.removeAttribute('tabindex');
+    copyBtn.disabled = false;
+    copyBtn.setAttribute('aria-disabled', 'false');
   } else {
     statusEl.classList.remove('is-live');
+    launchLive.classList.remove('is-live');
     statusEl.querySelector('span:last-child').textContent = dict['launch.pending'] || 'AWAITING LAUNCH';
+    launchLive.querySelector('span:last-child').textContent = dict['launch.pending'] || 'AWAITING LAUNCH';
     textEl.textContent = dict['launch.ca.notyet'] || 'Not live yet — check back Sept 25, 2026';
-    linkEl.style.pointerEvents = 'none';
-    linkEl.style.opacity = '.5';
+    linkEl.removeAttribute('href');
+    linkEl.setAttribute('aria-disabled', 'true');
+    linkEl.setAttribute('tabindex', '-1');
+    copyBtn.disabled = true;
+    copyBtn.setAttribute('aria-disabled', 'true');
   }
 }
 
