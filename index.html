@@ -548,7 +548,7 @@
   .character-card{
     position:relative;
     overflow:hidden;
-    min-height:420px;
+    aspect-ratio:1/1;
     border:1px solid var(--line);
     border-radius:22px;
     background:#090909;
@@ -563,9 +563,8 @@
   .character-card img{
     width:100%;
     height:100%;
-    min-height:420px;
     object-fit:cover;
-    object-position:center top;
+    object-position:center;
     display:block;
     transition:transform .35s ease;
   }
@@ -1573,20 +1572,20 @@
         </article>
 
         <article class="character-card reveal">
-          <img src="assets/doger.webp" alt="Doger — the fun bringer">
+          <img src="assets/doger.webp" alt="Doger — the loyal dog">
           <div class="character-meta">
-            <span class="character-index">03 / THE FUN BRINGER</span>
+            <span class="character-index">03 / THE LOYAL DOG</span>
             <strong>DOGER</strong>
-            <span data-i18n="five.c3">The fun bringer.</span>
+            <span data-i18n="five.c3">The loyal dog.</span>
           </div>
         </article>
 
         <article class="character-card reveal">
-          <img src="assets/munyak.webp" alt="Munyak — the good vibes cat">
+          <img src="assets/munyak.webp" alt="Munyak — the smart cat">
           <div class="character-meta">
-            <span class="character-index">04 / THE VIBE BOOSTER</span>
+            <span class="character-index">04 / THE SMART CAT</span>
             <strong>MUNYAK</strong>
-            <span data-i18n="five.c4">The vibe booster.</span>
+            <span data-i18n="five.c4">The smart cat.</span>
           </div>
         </article>
 
@@ -1595,7 +1594,7 @@
           <div class="character-meta">
             <span class="character-index">05 / THE SKY KING</span>
             <strong>GARUDA</strong>
-            <span data-i18n="five.c5">The freedom spirit.</span>
+            <span data-i18n="five.c5">The sky king.</span>
           </div>
         </article>
       </div>
@@ -1693,7 +1692,7 @@
         <div class="launch-banner reveal">
           <div>
             <div class="launch-banner-label">NGAKAK GLOBAL · OFFICIAL LAUNCH</div>
-            <div class="launch-banner-date">25 SEPTEMBER 2026</div>
+            <div class="launch-banner-date">25 SEPTEMBER 2026 · 8PM WIB / 1PM UTC</div>
           </div>
           <div class="launch-live" id="launchLive">
             <span class="dot"></span>
@@ -2028,7 +2027,7 @@ const i18n = {
     "launch.notify.label":"Email address","launch.notify.privacy":"Your email is submitted through Formspree and used only to notify you about the launch. <a href=\"privacy.html\">Read our Privacy Policy.</a>",
     "launch.scam.title":"Protect your wallet","launch.scam.body":"NGAKAK GLOBAL will never ask for your seed phrase, private key, wallet password, or a direct transfer. Ignore contract addresses sent in DMs and verify them here first.",
     "launch.notify.notready":"Sign-up isn't connected yet — follow our official channels instead.","launch.notify.success":"You're on the list — we'll email you at launch.","launch.notify.error":"Something went wrong — please try again.",
-    "hero.pill":"THE NGAKAK UNIVERSE · GLOBAL ENTERTAINMENT","hero.kicker":"The internet's happiest chaos.","hero.launchLabel":"$NGAKAK launches on Pump.fun","hero.launchDate":"Sept 25, 2026",
+    "hero.pill":"THE NGAKAK UNIVERSE · GLOBAL ENTERTAINMENT","hero.kicker":"The internet's happiest chaos.","hero.launchLabel":"$NGAKAK launches on Pump.fun","hero.launchDate":"Sept 25, 2026 · 13:00 UTC",
     "hero.title":"<span class=\"line\">NO STRESS.</span><span class=\"line\">JUST <em>NGAKAK.</em></span>",
     "hero.sub":"A global meme universe built around characters, creativity, community, and one simple mission: spread laughter.",
     "hero.cta1":"Enter the Universe ↘","hero.cta2":"Discover NGAKAK",
@@ -2046,7 +2045,7 @@ const i18n = {
     "about.p3.h":"Good vibes","about.p3.p":"A space built on positivity, not pressure.",
     "about.p4.h":"Long-term vision","about.p4.p":"Built to grow phase by phase, not to chase a single moment.",
     "five.title":"The NGAKAK Five","five.sub":"Five different personalities. One unstoppable crew. Same mission — spread laughter, connection, and good vibes.",
-    "five.c1":"The main mascot & coin.","five.c2":"The chaos maker.","five.c3":"The fun bringer.","five.c4":"The vibe booster.","five.c5":"The freedom spirit.","five.bottomTitle":"Five faces. One NGAKAK universe.","five.bottomText":"Each character brings a different personality, visual identity, and story potential to the same world.",
+    "five.c1":"The main mascot & coin.","five.c2":"The chaos maker.","five.c3":"The loyal dog.","five.c4":"The smart cat.","five.c5":"The sky king.","five.bottomTitle":"Five faces. One NGAKAK universe.","five.bottomText":"Each character brings a different personality, visual identity, and story potential to the same world.",
     "road.title":"The NGAKAK GLOBAL phases","road.sub":"Each phase is evaluated based on real progress, transparency, and the needs of the community.",
     "road.s1.h":"Foundation","road.s1.p":"Establish the official NGAKAK GLOBAL identity, website, social channels, community guidelines, and transparent launch information.",
     "road.s2.h":"Fair Launch","road.s2.p":"Launch $NGAKAK on Pump.fun, publish the official contract address, and provide on-chain information through official channels.",
@@ -2087,7 +2086,7 @@ const i18n = {
     "launch.notify.label":"Alamat email","launch.notify.privacy":"Email kamu dikirim melalui Formspree dan hanya digunakan untuk memberi notifikasi launch. <a href=\"privacy.html\">Baca Kebijakan Privasi kami.</a>",
     "launch.scam.title":"Lindungi wallet kamu","launch.scam.body":"NGAKAK GLOBAL tidak pernah meminta seed phrase, private key, password wallet, atau transfer langsung. Abaikan contract address dari DM dan verifikasi dulu di halaman ini.",
     "launch.notify.notready":"Pendaftaran belum terhubung — sementara ikuti kanal resmi kami dulu.","launch.notify.success":"Kamu sudah terdaftar — nanti kami email pas launch.","launch.notify.error":"Ada yang salah — coba lagi ya.",
-    "hero.pill":"THE NGAKAK UNIVERSE · GLOBAL ENTERTAINMENT","hero.kicker":"Kekacauan paling bahagia di internet.","hero.launchLabel":"$NGAKAK launch di Pump.fun","hero.launchDate":"25 Sept 2026",
+    "hero.pill":"THE NGAKAK UNIVERSE · GLOBAL ENTERTAINMENT","hero.kicker":"Kekacauan paling bahagia di internet.","hero.launchLabel":"$NGAKAK launch di Pump.fun","hero.launchDate":"25 Sept 2026 · 20:00 WIB",
     "hero.title":"<span class=\"line\">NO STRESS.</span><span class=\"line\">JUST <em>NGAKAK.</em></span>",
     "hero.sub":"Sebuah meme universe global yang dibangun dari karakter, kreativitas, komunitas, dan satu misi sederhana: menyebarkan tawa.",
     "hero.cta1":"Masuk ke Universe ↘","hero.cta2":"Kenali NGAKAK",
@@ -2103,7 +2102,7 @@ const i18n = {
     "about.p3.h":"Good vibes","about.p3.p":"Ruang yang dibangun di atas energi positif, bukan tekanan.",
     "about.p4.h":"Visi jangka panjang","about.p4.p":"Dibangun untuk tumbuh fase demi fase, bukan mengejar satu momen saja.",
     "five.title":"The NGAKAK Five","five.sub":"Lima kepribadian berbeda. Satu kru yang tak terhentikan. Misi yang sama — menyebarkan tawa, koneksi, dan good vibes.",
-    "five.c1":"Maskot utama & koin.","five.c2":"Sang pembuat kekacauan.","five.c3":"Sang pembawa keseruan.","five.c4":"Sang penambah energi.","five.c5":"Sang jiwa bebas.",
+    "five.c1":"Maskot utama & koin.","five.c2":"Sang pembuat kekacauan.","five.c3":"Sang anjing setia.","five.c4":"Sang kucing cerdas.","five.c5":"Sang raja langit.",
     "road.title":"Fase-fase NGAKAK GLOBAL","road.sub":"Setiap fase dinilai berdasarkan progres nyata, transparansi, dan kebutuhan komunitas.",
     "road.s1.h":"Foundation","road.s1.p":"Membangun identitas resmi NGAKAK GLOBAL, situs, kanal sosial, pedoman komunitas, dan informasi launch yang transparan.",
     "road.s2.h":"Fair Launch","road.s2.p":"Meluncurkan $NGAKAK di Pump.fun, mempublikasikan contract address resmi, dan menyediakan informasi on-chain lewat kanal resmi.",
@@ -2131,7 +2130,7 @@ const i18n = {
     "footer.disclaimer":"$NGAKAK adalah token meme tanpa utilitas intrinsik, dibuat murni untuk hiburan. NGAKAK GLOBAL adalah proyek berbasis komunitas, bukan entitas keuangan, dan tidak ada yang menjadi janji performa harga atau imbal hasil finansial. Selalu DYOR sebelum membeli aset kripto apa pun. Tidak ada yang ada di halaman ini merupakan nasihat keuangan."
   },
   zh: {
-    "about.card1.label":"为什么是 NGAKAK","about.card2.label":"我们如何构建","about.manifesto.label":"理念","about.manifesto.text":"一个简单的理念：创造一个让笑声、角色、创意和社区能够共同成长的空间。","arch.kicker":"NGAKAK 生态如何连接在一起","five.bottomText":"每个角色都为同一个世界带来不同的个性、视觉身份和故事潜力。","five.bottomTitle":"五张面孔。一个 NGAKAK 宇宙。","hero.kicker":"互联网最快乐的混乱","hero.launchDate":"2026年9月25日","hero.launchLabel":"$NGAKAK 将在 Pump.fun 上线","launch.m1":"等待官方上线。","launch.m2":"在本页面核实 CA。","launch.m3":"仅使用官方渠道。","launch.m4":"自行研究（DYOR）。","launch.dev.h":"开发者钱包——公开且可核实","launch.dev.p":"NGAKAK GLOBAL 背后的钱包是公开的。你可以自己在 Solscan 上追踪每一笔交易——我们不会要求你盲目信任我们。","launch.dev.solscan":"在 Solscan 上查看钱包 ↗","launch.dev.commit":"作为一种明确的信心表态，开发者计划在上线后通过同一个钱包购买约 $30–$70 的 $NGAKAK——可在 Solscan 上核实。这只是一个适度、象征性的支持姿态，不构成价格表现的保证，也不是财务建议。","launch.safe":"安全规则：切勿使用通过私信、回复或非官方帖子收到的合约地址。",
+    "about.card1.label":"为什么是 NGAKAK","about.card2.label":"我们如何构建","about.manifesto.label":"理念","about.manifesto.text":"一个简单的理念：创造一个让笑声、角色、创意和社区能够共同成长的空间。","arch.kicker":"NGAKAK 生态如何连接在一起","five.bottomText":"每个角色都为同一个世界带来不同的个性、视觉身份和故事潜力。","five.bottomTitle":"五张面孔。一个 NGAKAK 宇宙。","hero.kicker":"互联网最快乐的混乱","hero.launchDate":"2026年9月25日 21:00","hero.launchLabel":"$NGAKAK 将在 Pump.fun 上线","launch.m1":"等待官方上线。","launch.m2":"在本页面核实 CA。","launch.m3":"仅使用官方渠道。","launch.m4":"自行研究（DYOR）。","launch.dev.h":"开发者钱包——公开且可核实","launch.dev.p":"NGAKAK GLOBAL 背后的钱包是公开的。你可以自己在 Solscan 上追踪每一笔交易——我们不会要求你盲目信任我们。","launch.dev.solscan":"在 Solscan 上查看钱包 ↗","launch.dev.commit":"作为一种明确的信心表态，开发者计划在上线后通过同一个钱包购买约 $30–$70 的 $NGAKAK——可在 Solscan 上核实。这只是一个适度、象征性的支持姿态，不构成价格表现的保证，也不是财务建议。","launch.safe":"安全规则：切勿使用通过私信、回复或非官方帖子收到的合约地址。",
     "buy.securityLabel":"安全检查：","buy.security":"仅使用 NGAKAK GLOBAL 官方渠道公布的合约地址，并在 Pump.fun 上核实后再进行兑换。",
     
     "tok.eyebrow":"固定供应量 · $NGAKAK","tok.supplyLabel":"$NGAKAK 总供应量","tok.flowTitle":"Holder Rewards 流程","tok.flowSub":"根据当前项目文案描述","tok.flow1h":"交易费用","tok.flow1p":"通过代币交易产生。","tok.flow2h":"Pump.fun 分发钱包","tok.flow2p":"费用会汇入分发钱包。","tok.flow3h":"符合条件的持有者","tok.flow3p":"按比例每小时多次发放给符合条件的持有者。",    "nav.tag":"官方 NGAKAK 宇宙","nav.about":"关于","nav.five":"NGAKAK 五人组","nav.roadmap":"路线图","nav.buy":"购买方式","nav.ca":"合约与提醒","nav.token":"代币经济学","nav.faq":"常见问题","nav.community":"官方渠道","nav.join":"加入社区",
@@ -2144,7 +2143,7 @@ const i18n = {
     "launch.notify.label":"电子邮箱","launch.notify.privacy":"你的邮箱将通过 Formspree 提交，仅用于发送上线通知。<a href=\"privacy.html\">阅读隐私政策。</a>",
     "launch.scam.title":"保护你的钱包","launch.scam.body":"NGAKAK GLOBAL 绝不会索要助记词、私钥、钱包密码或直接转账。忽略私信中的合约地址，先在此页面验证。",
     "launch.notify.notready":"订阅功能尚未连接 —— 请先关注我们的官方渠道。","launch.notify.success":"已加入订阅名单 —— 上线时我们会邮件通知你。","launch.notify.error":"出了点问题 —— 请重试。",
-    "hero.pill":"将于 2026年9月25日 在 Pump.fun 上线 · 公平发售,无预售,无私募",
+    "hero.pill":"将于 2026年9月25日 21:00（UTC 13:00）在 Pump.fun 上线 · 公平发售,无预售,无私募",
     "hero.title":"别有压力。只管<em>NGAKAK。</em>",
     "hero.sub":"NGAKAK GLOBAL 是一个由社区驱动的 meme 代币,围绕欢笑、创意与连接而建立 —— 一个品牌、一个社区、一个全球大家庭。",
     "hero.cta1":"购买方式","hero.cta2":"什么是 NGAKAK GLOBAL?",
@@ -2160,7 +2159,7 @@ const i18n = {
     "about.p3.h":"良好氛围","about.p3.p":"一个建立在积极氛围而非压力之上的空间。",
     "about.p4.h":"长期愿景","about.p4.p":"按阶段逐步成长,而非追逐一时热度。",
     "five.title":"NGAKAK 五人组","five.sub":"五种不同的个性。一支势不可挡的团队。共同的使命 —— 传播欢笑、连接与良好氛围。",
-    "five.c1":"主吉祥物与代币。","five.c2":"混乱制造者。","five.c3":"欢乐使者。","five.c4":"氛围担当。","five.c5":"自由之魂。",
+    "five.c1":"主吉祥物与代币。","five.c2":"混乱制造者。","five.c3":"忠诚的狗狗。","five.c4":"聪明的猫。","five.c5":"天空之王。",
     "road.title":"NGAKAK GLOBAL 各阶段","road.sub":"每个阶段都根据实际进展、透明度和社区需求进行评估。",
     "road.s1.h":"Foundation(基础阶段)","road.s1.p":"建立 NGAKAK GLOBAL 的官方身份、网站、社交渠道、社区准则以及透明的上线信息。",
     "road.s2.h":"Fair Launch(公平发售)","road.s2.p":"在 Pump.fun 上线 $NGAKAK,公布官方合约地址,并通过官方渠道提供链上信息。",
@@ -2188,7 +2187,7 @@ const i18n = {
     "footer.disclaimer":"$NGAKAK 是一种没有内在实用性的 meme 代币,纯粹用于娱乐。NGAKAK GLOBAL 是一个社区驱动的项目,而非金融实体,本页面任何内容均不构成对价格表现或财务回报的承诺。购买任何加密资产前请务必自行研究(DYOR)。本页面内容均不构成财务建议。"
   },
   ru: {
-    "about.card1.label":"ПОЧЕМУ NGAKAK","about.card2.label":"КАК МЫ СТРОИМ","about.manifesto.label":"ИДЕЯ","about.manifesto.text":"Одна простая идея: создать место, где смех, персонажи, творчество и сообщество могут расти вместе.","five.bottomText":"Каждый персонаж привносит в один мир свою индивидуальность, визуальный образ и потенциал для историй.","five.bottomTitle":"Пять лиц. Одна вселенная NGAKAK.","arch.kicker":"Как устроена экосистема NGAKAK","hero.kicker":"Самый счастливый хаос интернета","hero.launchDate":"25 сентября 2026","hero.launchLabel":"$NGAKAK запускается на Pump.fun","launch.m1":"Дождитесь официального запуска.","launch.m2":"Проверьте CA на этой странице.","launch.m3":"Используйте только официальные каналы.","launch.m4":"Проведите собственное исследование.","launch.dev.h":"Кошелёк разработчика — публичный и проверяемый","launch.dev.p":"Кошелёк за NGAKAK GLOBAL публичен. Отслеживайте каждую транзакцию сами на Solscan — мы не просим верить нам вслепую.","launch.dev.solscan":"Посмотреть кошелёк на Solscan ↗","launch.dev.commit":"В качестве наглядного жеста уверенности разработчик планирует купить примерно на $30–$70 $NGAKAK через этот же кошелёк после запуска — это можно проверить на Solscan. Это скромный, символический жест поддержки, а не гарантия роста цены и не финансовый совет.","launch.safe":"Правило безопасности: никогда не используйте адрес контракта из личных сообщений, ответов или неофициальных публикаций.",
+    "about.card1.label":"ПОЧЕМУ NGAKAK","about.card2.label":"КАК МЫ СТРОИМ","about.manifesto.label":"ИДЕЯ","about.manifesto.text":"Одна простая идея: создать место, где смех, персонажи, творчество и сообщество могут расти вместе.","five.bottomText":"Каждый персонаж привносит в один мир свою индивидуальность, визуальный образ и потенциал для историй.","five.bottomTitle":"Пять лиц. Одна вселенная NGAKAK.","arch.kicker":"Как устроена экосистема NGAKAK","hero.kicker":"Самый счастливый хаос интернета","hero.launchDate":"25 сентября 2026, 16:00 МСК","hero.launchLabel":"$NGAKAK запускается на Pump.fun","launch.m1":"Дождитесь официального запуска.","launch.m2":"Проверьте CA на этой странице.","launch.m3":"Используйте только официальные каналы.","launch.m4":"Проведите собственное исследование.","launch.dev.h":"Кошелёк разработчика — публичный и проверяемый","launch.dev.p":"Кошелёк за NGAKAK GLOBAL публичен. Отслеживайте каждую транзакцию сами на Solscan — мы не просим верить нам вслепую.","launch.dev.solscan":"Посмотреть кошелёк на Solscan ↗","launch.dev.commit":"В качестве наглядного жеста уверенности разработчик планирует купить примерно на $30–$70 $NGAKAK через этот же кошелёк после запуска — это можно проверить на Solscan. Это скромный, символический жест поддержки, а не гарантия роста цены и не финансовый совет.","launch.safe":"Правило безопасности: никогда не используйте адрес контракта из личных сообщений, ответов или неофициальных публикаций.",
     "buy.securityLabel":"Проверка безопасности:","buy.security":"Используйте только адрес контракта, опубликованный в официальных каналах NGAKAK GLOBAL, и проверьте его на Pump.fun перед обменом.",
     
     "tok.eyebrow":"Фиксированное предложение · $NGAKAK","tok.supplyLabel":"ОБЩЕЕ ПРЕДЛОЖЕНИЕ $NGAKAK","tok.flowTitle":"Схема Holder Rewards","tok.flowSub":"Согласно текущему описанию проекта","tok.flow1h":"Торговые комиссии","tok.flow1p":"Возникают при торговле токеном.","tok.flow2h":"Распределительный кошелёк Pump.fun","tok.flow2p":"Комиссии поступают в распределительный кошелёк.","tok.flow3h":"Подходящие держатели","tok.flow3p":"Распределяются пропорционально подходящим держателям несколько раз в час.",    "nav.tag":"Официальная вселенная NGAKAK","nav.about":"О проекте","nav.five":"NGAKAK Five","nav.roadmap":"Дорожная карта","nav.buy":"Как купить","nav.ca":"CA и уведомления","nav.token":"Токеномика","nav.faq":"FAQ","nav.community":"Каналы","nav.join":"Присоединиться",
@@ -2201,7 +2200,7 @@ const i18n = {
     "launch.notify.label":"Адрес электронной почты","launch.notify.privacy":"Ваш email передаётся через Formspree и используется только для уведомления о запуске. <a href=\"privacy.html\">Прочитать Политику конфиденциальности.</a>",
     "launch.scam.title":"Защитите свой кошелёк","launch.scam.body":"NGAKAK GLOBAL никогда не попросит seed-фразу, приватный ключ, пароль кошелька или прямой перевод. Игнорируйте адреса контрактов из личных сообщений и сначала проверяйте их здесь.",
     "launch.notify.notready":"Подписка пока не подключена — а пока следите за нашими официальными каналами.","launch.notify.success":"Вы в списке — напишем вам на запуске.","launch.notify.error":"Что-то пошло не так — попробуйте ещё раз.",
-    "hero.pill":"Запуск на Pump.fun · 25 сентября 2026 · Честный запуск, без пресейла, без частных продаж",
+    "hero.pill":"Запуск на Pump.fun · 25 сентября 2026, 16:00 МСК (13:00 UTC) · Честный запуск, без пресейла, без частных продаж",
     "hero.title":"Без стресса. Просто <em>NGAKAK.</em>",
     "hero.sub":"NGAKAK GLOBAL — мем-токен, управляемый сообществом, построенный вокруг смеха, творчества и связи между людьми — один бренд, одно сообщество, одна глобальная семья.",
     "hero.cta1":"Как купить","hero.cta2":"Что такое NGAKAK GLOBAL?",
@@ -2217,7 +2216,7 @@ const i18n = {
     "about.p3.h":"Хорошее настроение","about.p3.p":"Пространство, построенное на позитиве, а не на давлении.",
     "about.p4.h":"Долгосрочное видение","about.p4.p":"Построено расти поэтапно, а не гнаться за одним моментом.",
     "five.title":"NGAKAK Five","five.sub":"Пять разных личностей. Одна неудержимая команда. Общая миссия — распространять смех, связь и хорошее настроение.",
-    "five.c1":"Главный маскот и токен.","five.c2":"Создатель хаоса.","five.c3":"Источник веселья.","five.c4":"Заряжает энергией.","five.c5":"Дух свободы.",
+    "five.c1":"Главный маскот и токен.","five.c2":"Создатель хаоса.","five.c3":"Верный пёс.","five.c4":"Умный кот.","five.c5":"Король небес.",
     "road.title":"Этапы NGAKAK GLOBAL","road.sub":"Каждый этап оценивается на основе реального прогресса, прозрачности и потребностей сообщества.",
     "road.s1.h":"Foundation (Фундамент)","road.s1.p":"Формирование официальной идентичности NGAKAK GLOBAL, сайта, социальных каналов, правил сообщества и прозрачной информации о запуске.",
     "road.s2.h":"Fair Launch (Честный запуск)","road.s2.p":"Запуск $NGAKAK на Pump.fun, публикация официального адреса контракта и предоставление ончейн-информации через официальные каналы.",
@@ -2411,8 +2410,8 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
 }
 
-// Countdown to Sept 25, 2026 00:00 UTC
-const launchDate = new Date('2026-09-25T00:00:00Z').getTime();
+// Countdown to Sept 25, 2026, 13:00 UTC (20:00 WIB)
+const launchDate = new Date('2026-09-25T13:00:00Z').getTime();
 function tickCountdown(){
   const now = Date.now();
   const diff = Math.max(0, launchDate - now);
