@@ -986,6 +986,9 @@
 
   footer{border-top:1px solid var(--line); padding:40px 0;}
   .footer-grid{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;}
+  .footer-wordmark{display:block; max-width:260px; width:100%; margin:0 auto 32px; opacity:.95;}
+  .nav-wordmark{height:44px; width:auto; display:block;}
+  @media (max-width:600px){ .nav-wordmark{height:38px;} }
   footer .disclaimer{font-size:12.5px; color:var(--muted); max-width:64ch; margin-top:24px;}
   footer nav{display:flex; gap:18px; flex-wrap:wrap;}
   footer nav a{font-size:13.5px; color:var(--muted);}
@@ -1381,11 +1384,9 @@
 <header class="site">
   <div class="nav">
     <div class="brand">
-      <div class="brand-mark"><img src="assets/ngakak-global-logo.webp" alt="NGAKAK GLOBAL official logo"></div>
-      <div class="brand-text">
-        <strong>NGAKAK GLOBAL</strong>
-        <span data-i18n="nav.tag">The Official NGAKAK Universe</span>
-      </div>
+      <a href="#" aria-label="NGAKAK GLOBAL — home">
+        <img class="nav-wordmark" src="assets/ngakak-global-wordmark.webp" alt="NGAKAK GLOBAL logo">
+      </a>
     </div>
     <button class="nav-menu-btn" id="navMenuBtn" type="button" aria-label="Open navigation" aria-expanded="false"><span></span></button>
     <nav class="links">
@@ -1990,6 +1991,9 @@
 </main>
 
 <footer>
+  <div class="wrap">
+    <img class="footer-wordmark" src="assets/ngakak-global-wordmark.webp" alt="NGAKAK GLOBAL logo">
+  </div>
   <div class="wrap footer-grid">
     <div class="brand">
       <div class="brand-mark"><img src="assets/ngakak-global-logo.webp" alt="NGAKAK GLOBAL official logo"></div>
